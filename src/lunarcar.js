@@ -4,16 +4,17 @@ class Car{
         this.arcar[0][0]=1
         this.d="N"
     }
-
     execute(cadena){
-    let resultado="";
-    if (cadena.trim() == "")
-    {
-        resultado += this.findPosition(this.arcar)+ this.d;
+        let resultado="";
+            if (cadena.trim() == "")
+            {
+                resultado += this.findPosition(this.arcar)+ this.d;
+            }
+            if(cadena=="A"){
+                resultado+=this.goForward(this.arcar)+ this.d;
+            }
         return resultado;
     }
-    }
-
     findPosition(arr){
         let result = [ -1, -1 ];
         for (var i=0; i<arr.length; i++){
@@ -27,13 +28,20 @@ class Car{
         }
         return result;   
     }
-
     make2Darray(rows,cols){
         var arr = new Array(rows);
         for (var i=0; i<arr.length; i++){
             arr[i] =new Array(cols);
         }
         return arr;
+    }
+    goForward(arr){
+        let actual=this.findPosition(arr)
+       // arr[actual[0]][actual[1]]=1;
+        arr[actual[0]][actual[1]+1]=1;
+        actual[1]=actual[1]+1;
+
+        return actual;
     }
 }
 
